@@ -1,0 +1,43 @@
+1. Eloquent ORM là gì trong Laravel? 
+    - Eloquent ORM là công cụ trong Laravel cung cấp cách thức tương tác với database rất thuận lợi.
+    - Mỗi table trong database sẽ có một model tương ứng -> Giúp select, insert, update, delete dữ liệu trong table rất dễ dàng
+    
+2. Laravel Eloquent có các quy ước mặc định nào khi ánh xạ giữa tên model và bảng trong cơ sở dữ liệu?
+    - Tên bảng: Eloquent sẽ lấy tên model và chuyển thành dạng số nhiều để làm tên bảng. Ví dụ, model User sẽ ánh xạ tới bảng users.
+    - Khóa chính: Eloquent sử dụng cột id làm khóa chính.
+    - Timestamps: Eloquent tự động quản lý hai cột created_at và updated_at để lưu trữ thời gian tạo và cập nhật bản ghi
+
+3. Làm thế nào để thay đổi tên bảng (table) và khóa chính (primary key) mặc định trong Eloquent?
+    - Tên bảng: có thể thay đổi tên bảng bằng cách khai báo thuộc tính $table trong model.
+        class User extends Model {
+            protected $table = 'my_users';
+        }
+    - Khóa chính: có thể thay đổi khóa chính bằng cách khai báo thuộc tính $primaryKey trong model.
+
+        class User extends Model {
+            protected $primaryKey = 'user_id';
+        }
+
+4. CRUD với Eloquent ORM như nào?
+    - Create: Tạo một bản ghi mới.
+        Ví dụ: 
+            $user = new User;
+            $user->name = 'Hoa Quynh';
+            $user->email = 'quynh58@gmail.com';
+            $user->save();
+    
+    - Read: Lấy dữ liệu từ cơ sở dữ liệu.
+        Ví dụ: 
+            $users = User::all(); // Lấy tất cả bản ghi
+            $user = User::find(1); // Lấy bản ghi với id = 1
+
+    - Update: Cập nhật một bản ghi.
+        Ví dụ:
+            $user = User::find(1);
+            $user->name = 'Haha';
+            $user->save();
+        
+    - Delete: Xóa một bản ghi
+        Ví dụ: 
+            $user = User::find(1);
+            $user->delete();
