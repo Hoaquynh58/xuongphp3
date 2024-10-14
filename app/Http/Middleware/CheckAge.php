@@ -15,14 +15,14 @@ class CheckAge
      */
     public function handle(Request $request, Closure $next): Response
     {
-        $age = $request->get('age', null);
+        $age = $request->query('age'); // Lấy tuổi từ query string
 
-        if($age > 18){
-            return $next($request);
+        if (is_null($age) || !is_numeric($age) || $age < 18) {
+            session()->flash('error', 'Bạn chưa đủ 18 tuổi để truy cập vào trang này.');
+            // return redirect('/?message=' . urlencode('Bạn chưa đủ 18 tuổi để truy cập trang này.'));
+            return redirect('/');
         }
 
-        abort(403);
-
-        // return $next($request); // Tiếp tục nếu đủ tuổi
+        return $next($request); // Tiếp tục nếu đủ tuổi
     }
 }

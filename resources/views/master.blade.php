@@ -15,8 +15,9 @@
 <body>
     <header>
         <nav class="nav justify-content-center  ">
-            <a class="nav-link active" href="/" aria-current="page">Welcome</a>
-            <a class="nav-link" href="{{ route('customers.index')}}">Quản lý khách hàng</a>
+            {{-- <a class="nav-link active" href="/" aria-current="page">Welcome</a>
+            <a class="nav-link" href="{{ route('customers.index')}}">Quản lý khách hàng</a> --}}
+            {{-- <a class="nav-link" href="{{ route('customers.check18')}}">Movies</a> --}}
         </nav>
 
     </header>
@@ -26,7 +27,7 @@
     </main>
 
     <footer class="text-center">
-        <p>Copyright {{ date('Y') }}, by Quỳnh</p>
+        {{-- <p>Copyright {{ date('Y') }}, by Quỳnh</p> --}}
         
     </footer>
     <!-- Bootstrap JavaScript Libraries -->
